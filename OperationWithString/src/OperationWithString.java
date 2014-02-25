@@ -84,8 +84,29 @@ public class OperationWithString {
 
         public void actionPerformed(final ActionEvent ev)
         {
-        	String str = input.getText();     	
-            output.append("Длина строки с учетом пробелов равна: " + str.length());
+        	String str = input.getText();
+        	char[] temp = str.toCharArray();
+            int countVow = 0;
+            char[] strVow = {'а','А','е','Е','ё','Ё','и','И','о','О','у','У','ы','Ы','э','Э','ю','Ю','я','Я'};
+            
+            for(int i = 0; i < str.length(); i++) {
+                for(int j = 0; j < strVow.length; j++) {
+    	            if(temp[i] == strVow[j]){
+    	            	countVow++;
+    	            }
+                }
+            }
+            int countCon = 0;
+            char[] strCon = {'б','Б','в','В','г','Г','д','Д','ж','Ж','з','З','й','Й','к','К','л','Л','м','М','н','Н','п','П','р','Р','с','С','т','Т','ф','Ф','х','Х','ц','Ц','ч','Ч','ш','Ш','щ','Щ'};
+            
+            for(int i = 0; i < str.length(); i++) {
+                for(int j = 0; j < strCon.length; j++) {
+    	            if(temp[i] == strCon[j]){
+    	            	countCon++;
+    	            }
+                }
+            }
+            output.append("Длина строки с учетом пробелов равна: " + str.length() + "\n" + "Количество гласных букв в строке равно:  " + countVow + "\n" + "Количество согласных букв в строке равно: " + countCon);
         }
     }
 }
